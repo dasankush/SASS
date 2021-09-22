@@ -1,0 +1,76 @@
+@import "./resets";
+@import "./variables";
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+@mixin theme($light-theme: true) {
+  @if $light-theme {
+    background-color: lighten($background-color, 100%);
+    color: darken($text-color, 40%);
+  }
+  // @else $light-theme{
+  //     font-weight: weight(bold);
+  // }
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: roboto;
+  font-size: $font-size;
+  letter-spacing: 0px;
+  word-spacing: 1px;
+}
+.container {
+  display: flex;
+  color: $primary-color;
+  font-family: roboto;
+  font-size: $font-size;
+  font-weight: weight(light);
+  letter-spacing: 1px;
+  margin-top: 8px;
+  padding: 10px;
+  justify-content: flex-end;
+  padding-right: 60px;
+}
+.items {
+  display: flex;
+  padding-right: 10px;
+  padding-right: 50px;
+
+  align-items: baseline;
+}
+a {
+  padding: 10px;
+  text-decoration: none;
+  color: $primary-color;
+}
+a:hover {
+  color: $on-hover-color;
+  border-radius: 15px;
+  box-shadow: 5px 10px 14px $secondary-background-color;
+  transform: translateX(15px) translateY(-8px);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+.main {
+  @include flexCenter(row);
+  width: 80%;
+  margin: 0 auto;
+  &__paragraph {
+    padding-top: 50px;
+    padding-right: 50px;
+    line-height: 20px;
+    font-weight: map-get($font-weights, light);
+  }
+}
+
+.light {
+  @include theme($light-theme: true);
+}

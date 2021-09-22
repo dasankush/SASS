@@ -1,0 +1,41 @@
+@import 'path';
+$primary-color: rgb(184, 184, 184);
+$background-color: rgb(33, 33, 33);
+$secondary-background-color: rgb(22, 22, 22);
+$text-color: white;
+$on-hover-color: rgb(255, 255, 255);
+$font-size: 14px;
+$font-weights: (
+    "light": 300,
+    "regular": 400,
+    "medium": 500, 
+    "bold": 700 
+);
+    //selecting this variable via map-get($font-weights, light);
+
+
+interplation in nesting:
+.main{
+    property;
+    property2;
+    #{&}__paragraph{                //.main__paragraph{}
+            property;
+        }
+}
+
+@function function_name($weights){
+    @return map-get($font-weights, $weights)
+}
+// function_name(regular);
+//functions should be used to compute values and return values
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@include flexCenter(row);
+//mixins are used to define styles
+
+sfjlsdf
